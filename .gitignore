@@ -40,3 +40,8 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+
+### Jar Files ###
+gradle/wrapper/gradle-wrapper.jar
+libs/Metric-space-framework-1.0-20211209.152843-1.jar

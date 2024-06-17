@@ -2,7 +2,9 @@ plugins {
     kotlin("jvm") version "1.9.23"
 }
 
-group = "com.metric.search.visualisatioin"
+apply(plugin = "maven-publish")
+
+group = "com.metric.search.visualisation"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -22,4 +24,13 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(17)
+}
+
+configure<PublishingExtension> {
+    publications {
+        create<MavenPublication>("maven") {
+            artifactId = "visualisation-library"
+            from(components["java"])
+        }
+    }
 }
