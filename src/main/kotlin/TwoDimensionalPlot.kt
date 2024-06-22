@@ -1,7 +1,7 @@
 package com.metric.search.visualisation
 
+import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.util.color.Color
-
 /**
  * This histogram interface defines the contract for the visualisation of histograms.
  */
@@ -39,8 +39,5 @@ interface TwoDimensionalPlot {
     /**
      * This is the method to plot the two-dimensional diagram.
      */
-    fun plot() {
-
-    }
-
+    fun plot(): Plot
 }
