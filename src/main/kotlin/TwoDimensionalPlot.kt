@@ -2,42 +2,51 @@ package com.metric.search.visualisation
 
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.util.color.Color
+
 /**
- * This histogram interface defines the contract for the visualisation of histograms.
+ * This is the two-dimensional interface definition of the contract for the visualisation library.
+ * The library is a custom wrapper around a Kotlin Kandy library for visualisation.
  */
 interface TwoDimensionalPlot {
     /**
-     * The description of the y-axis on the diagram.
+     * This is the description of the y-axis on the diagram.
      */
     var yAxisDescription: String
 
     /**
-     * The description of the x-axis on the diagram.
+     * This is the description of the x-axis on the diagram.
      */
     var xAxisDescription: String
 
     /**
-     * The detailed description or title of the diagram.
+     * This is the detailed description or title of the diagram.
      */
     var diagramDescription: String
 
     /**
-     * The fill colour of the diagram plot object.
+     * This is the fill colour of the diagram plot object.
      */
     var colour: Color
 
     /**
-     * The input dataset whose values will be plotted on the x-axis of the two-dimension diagram.
+     * This is the input dataset whose values will be plotted on the x-axis of the two-dimension diagram.
      */
     var xDataSet: List<Double>
 
     /**
-     * The input dataset whose values will be plotted on the y-axis of the two-dimension diagram.
+     * This is the input dataset whose values will be plotted on the y-axis of the two-dimension diagram.
      */
     var yDataSet: List<Double>
 
     /**
-     * This is the method to plot the two-dimensional diagram.
+     * This is the interface definition of the method to plot a two-dimensional diagram.
      */
     fun plot(): Plot
+
+
+    /**
+     * This is the interface definition of the method to save a two-dimensional diagram generated.
+     * The generated visualisation will be saved in an acceptable format - jpg, jpeg, png.
+     */
+    fun save(plot: Plot, imageName: String)
 }
