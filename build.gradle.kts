@@ -15,6 +15,8 @@ repositories {
 dependencies {
     implementation(files("libs/Metric-space-framework-1.0-20211209.152843-1.jar"))
     implementation("org.jetbrains.kotlinx:kotlin-statistics-jvm:0.2.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
+    testImplementation("io.mockk:mockk:1.13.7")
 }
 
 tasks.test {
