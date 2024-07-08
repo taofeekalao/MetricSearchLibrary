@@ -6,8 +6,10 @@ import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.layers.bars
 import org.jetbrains.kotlinx.kandy.letsplot.layers.line
+import org.jetbrains.kotlinx.kandy.letsplot.settings.LineType
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.binning.BinsOption
+import org.jetbrains.kotlinx.statistics.kandy.stattransform.context.StatBinLayerCollectorContext
 import org.jetbrains.kotlinx.statistics.kandy.stattransform.statBin
 
 
@@ -46,27 +48,39 @@ class Histogram(
         if (lineOption) {
             return plot {
                 statBin(xDataSet, binsOption = BinsOption.byNumber(15)) {
-                    bars {
-                        x(Stat.x)
-                        y(Stat.count)
-                    }
-                    line {
-                        x(Stat.x)
-                        y(Stat.count)
-                    }
+                    plotBar()
+                    plotLine()
                     layout.title = diagramDescription
                 }
             }
         } else {
             return plot {
                 statBin(xDataSet, binsOption = BinsOption.byNumber(15)) {
-                    bars {
-                        x(Stat.x)
-                        y(Stat.count)
-                    }
+                    plotBar()
                     layout.title = diagramDescription
                 }
             }
+        }
+    }
+
+    /**
+     * This is a helper function to plot a line graph using the data supplied.
+     */
+    private fun StatBinLayerCollectorContext.plotLine() {
+        line {
+            x(Stat.x)
+            y(Stat.count)
+            color = Color.GREEN
+        }
+    }
+
+    /**
+     * This is a helper function to plot a bar chart using the data supplied.
+     */
+    private fun StatBinLayerCollectorContext.plotBar() {
+        bars {
+            x(Stat.x)
+            y(Stat.count)
         }
     }
 
