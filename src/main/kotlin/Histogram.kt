@@ -1,10 +1,15 @@
 package com.metric.search.visualisation
 
-import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.export.save
-import org.jetbrains.kotlinx.statistics.kandy.layers.histogram
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
+import org.jetbrains.kotlinx.kandy.letsplot.layers.bars
+import org.jetbrains.kotlinx.kandy.letsplot.layers.line
+import org.jetbrains.kotlinx.kandy.util.color.Color
+import org.jetbrains.kotlinx.statistics.binning.BinsOption
+import org.jetbrains.kotlinx.statistics.kandy.stattransform.statBin
+
 
 /**
  * This is the Histogram diagram implementation class of the Two-Dimensional interface contract.
@@ -15,22 +20,53 @@ class Histogram(
     override var diagramDescription: String = "Histogram",
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
-    override var yDataSet: List<Double> = mutableListOf<Double>()
+    override var yDataSet: List<Double> = mutableListOf<Double>(),
+    var lineOption: Boolean = false
 ) : TwoDimensionalPlot {
 
+    /**
+     * This is the primary constructor for the implementation.
+     */
     init {
         if (xDataSet.isEmpty()) {
             throw IllegalArgumentException("xDataSet can't be empty")
+        }
+
+        if (yDataSet.isNotEmpty()) {
+            yDataSet= mutableListOf<Double>()
         }
     }
 
     /**
      * This function is the Histogram Diagram implementation of the plot method from the two-dimensional interface.
-     * It is to plot the Histogram diagram based on Kotlin Kandy
+     * It is to plot the Histogram diagram based on the Kotlin Kandy library.
+     * It can switch off or on a line plot over the bars in the histogram plot.
      */
     override fun plot(): Plot {
-        return plot {
-            histogram(xDataSet)
+        if (lineOption) {
+            return plot {
+                statBin(xDataSet, binsOption = BinsOption.byNumber(15)) {
+                    bars {
+                        x(Stat.x)
+                        y(Stat.count)
+                    }
+                    line {
+                        x(Stat.x)
+                        y(Stat.count)
+                    }
+                    layout.title = diagramDescription
+                }
+            }
+        } else {
+            return plot {
+                statBin(xDataSet, binsOption = BinsOption.byNumber(15)) {
+                    bars {
+                        x(Stat.x)
+                        y(Stat.count)
+                    }
+                    layout.title = diagramDescription
+                }
+            }
         }
     }
 
@@ -42,6 +78,7 @@ class Histogram(
     override fun save(plot: Plot, imageName: String) {
         plot.save(imageName)
     }
+
 }
 
 

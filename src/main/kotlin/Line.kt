@@ -14,6 +14,10 @@ class Line(
     override var yDataSet: List<Double>
 ) : TwoDimensionalPlot {
 
+
+    /**
+     * This is the primary constructor for the implementation.
+     */
     init {
         if (xDataSet.isEmpty() || yDataSet.isEmpty()) {
             throw IllegalArgumentException("xDataSet or yDataSet can't be empty")
