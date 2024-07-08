@@ -2,7 +2,10 @@ package com.metric.search.visualisation
 
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.export.save
+import org.jetbrains.kotlinx.kandy.letsplot.layers.hLine
 import org.jetbrains.kotlinx.kandy.letsplot.layers.line
+import org.jetbrains.kotlinx.kandy.letsplot.layers.vLine
+import org.jetbrains.kotlinx.kandy.letsplot.settings.LineType
 import org.jetbrains.kotlinx.kandy.util.color.Color
 
 class Line(
@@ -11,7 +14,12 @@ class Line(
     override var diagramDescription: String = "Line Graph",
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
-    override var yDataSet: List<Double>
+    override var yDataSet: List<Double>,
+
+    var verticalIntersect: Boolean = false,
+    var verticalIntersectValue: Double = 0.0,
+    var horizontalIntersect: Boolean = false,
+    var horizontalIntersectValue: Double = 0.0,
 ) : TwoDimensionalPlot {
 
 
@@ -19,8 +27,12 @@ class Line(
      * This is the primary constructor for the implementation.
      */
     init {
-        if (xDataSet.isEmpty() || yDataSet.isEmpty()) {
-            throw IllegalArgumentException("xDataSet or yDataSet can't be empty")
+        if (xDataSet.isEmpty()) {
+            throw IllegalArgumentException("Dataset for x-axis cannot be empty")
+        }
+
+        if (yDataSet.isEmpty()) {
+            throw IllegalArgumentException("Dataset for y-axis cannot be empty")
         }
     }
 
@@ -33,6 +45,22 @@ class Line(
             line {
                 x(xDataSet)
                 y(yDataSet)
+
+                if (verticalIntersect) {
+                    vLine {
+                        xIntercept.constant(verticalIntersectValue)
+                        color = Color.RED
+                        type = LineType.DASHED
+                    }
+                }
+
+                if (horizontalIntersect) {
+                    hLine {
+                        yIntercept.constant(horizontalIntersectValue)
+                        color = Color.RED
+                        type = LineType.DASHED
+                    }
+                }
             }
         }
     }
