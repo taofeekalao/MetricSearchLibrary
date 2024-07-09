@@ -1,5 +1,3 @@
-package com.metric.search.visualisation
-
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.letsplot.layers.hLine
@@ -7,7 +5,6 @@ import org.jetbrains.kotlinx.kandy.letsplot.layers.line
 import org.jetbrains.kotlinx.kandy.letsplot.layers.vLine
 import org.jetbrains.kotlinx.kandy.letsplot.settings.LineType
 import org.jetbrains.kotlinx.kandy.util.color.Color
-
 
 /**
  * This is the Line Graph implementation class of the Two-Dimensional interface contract.

@@ -1,5 +1,4 @@
 
-import com.metric.search.visualisation.Line
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

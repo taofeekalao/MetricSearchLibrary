@@ -1,5 +1,3 @@
-package com.metric.search.visualisation
-
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.util.color.Color
 

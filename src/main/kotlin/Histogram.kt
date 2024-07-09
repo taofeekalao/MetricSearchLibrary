@@ -1,5 +1,3 @@
-package com.metric.search.visualisation
-
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.export.save
@@ -10,7 +8,6 @@ import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.binning.BinsOption
 import org.jetbrains.kotlinx.statistics.kandy.stattransform.context.StatBinLayerCollectorContext
 import org.jetbrains.kotlinx.statistics.kandy.stattransform.statBin
-
 
 /**
  * This is the Histogram diagram implementation class of the Two-Dimensional interface contract.

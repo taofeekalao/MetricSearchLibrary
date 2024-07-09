@@ -1,10 +1,5 @@
 
-import com.metric.search.visualisation.Histogram
-import com.metric.search.visualisation.Line
-import io.mockk.mockk
-import io.mockk.verify
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
