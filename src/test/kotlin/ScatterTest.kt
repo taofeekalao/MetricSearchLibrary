@@ -1,5 +1,3 @@
-import com.metric.search.visualisation.Histogram
-import com.metric.search.visualisation.Scatter
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
