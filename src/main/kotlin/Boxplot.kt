@@ -1,9 +1,9 @@
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.dsl.plot
+import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.kandy.layers.boxplot
-
 
 /**
  * This is the Boxplot diagram implementation class of the Two-Dimensional interface contract.
@@ -15,6 +15,9 @@ class Boxplot(
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
     override var yDataSet: List<Double> = mutableListOf<Double>(),
+    var boxplotFillColor: Color = Color.BLACK,
+    var boxplotColor: Color = Color.BLACK,
+    var boxplotSymbol: Symbol = Symbol.DIAMOND
 ) : TwoDimensionalPlot {
 
     /**
@@ -36,7 +39,13 @@ class Boxplot(
      */
     override fun plot(): Plot {
         return plot {
-            boxplot(xDataSet)
+            boxplot(xDataSet) {
+                outliers {
+                    fillColor = boxplotFillColor
+                    color = boxplotColor
+                    symbol = boxplotSymbol
+                }
+            }
         }
     }
 
