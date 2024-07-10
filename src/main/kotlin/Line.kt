@@ -45,59 +45,53 @@ class Line(
      * It is to plot line graph diagram based on Kotlin Kandy
      */
     override fun plot(): Plot {
-        val curvedLine = plot {
-            smoothLine(xDataSet, yDataSet) {
-                x(xDataSet)
-                y(yDataSet)
-
-                if (verticalIntersect) {
-                    vLine {
-                        xIntercept.constant(verticalIntersectValue)
-                        color = Color.RED
-                        type = LineType.DASHED
-                    }
-                }
-
-                if (horizontalIntersect) {
-                    hLine {
-                        yIntercept.constant(horizontalIntersectValue)
-                        color = Color.RED
-                        type = LineType.DASHED
-                    }
-                }
-            }
-        }
-
-        val straightLine = plot {
-            line {
-                x(xDataSet)
-                y(yDataSet)
-
-                if (verticalIntersect) {
-                    vLine {
-                        xIntercept.constant(verticalIntersectValue)
-                        color = Color.RED
-                        type = LineType.DASHED
-                    }
-                }
-
-                if (horizontalIntersect) {
-                    hLine {
-                        yIntercept.constant(horizontalIntersectValue)
-                        color = Color.RED
-                        type = LineType.DASHED
-                    }
-                }
-            }
-        }
-
         return if (smoothness) {
-            curvedLine
+            plot {
+                smoothLine(xDataSet, yDataSet) {
+                    x(xDataSet)
+                    y(yDataSet)
+
+                    if (verticalIntersect) {
+                        vLine {
+                            xIntercept.constant(verticalIntersectValue)
+                            color = Color.RED
+                            type = LineType.DASHED
+                        }
+                    }
+
+                    if (horizontalIntersect) {
+                        hLine {
+                            yIntercept.constant(horizontalIntersectValue)
+                            color = Color.RED
+                            type = LineType.DASHED
+                        }
+                    }
+                }
+            }
         } else {
-            straightLine
+            plot {
+                line {
+                    x(xDataSet)
+                    y(yDataSet)
+
+                    if (verticalIntersect) {
+                        vLine {
+                            xIntercept.constant(verticalIntersectValue)
+                            color = Color.RED
+                            type = LineType.DASHED
+                        }
+                    }
+
+                    if (horizontalIntersect) {
+                        hLine {
+                            yIntercept.constant(horizontalIntersectValue)
+                            color = Color.RED
+                            type = LineType.DASHED
+                        }
+                    }
+                }
+            }
         }
-
-
     }
 
     /**
