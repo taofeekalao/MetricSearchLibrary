@@ -1,3 +1,4 @@
+import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.letsplot.layers.hLine
@@ -5,6 +6,7 @@ import org.jetbrains.kotlinx.kandy.letsplot.layers.line
 import org.jetbrains.kotlinx.kandy.letsplot.layers.vLine
 import org.jetbrains.kotlinx.kandy.letsplot.settings.LineType
 import org.jetbrains.kotlinx.kandy.util.color.Color
+import org.jetbrains.kotlinx.statistics.kandy.layers.smoothLine
 
 /**
  * This is the Line Graph implementation class of the Two-Dimensional interface contract.
@@ -21,6 +23,7 @@ class Line(
     var verticalIntersectValue: Double = 0.0,
     var horizontalIntersect: Boolean = false,
     var horizontalIntersectValue: Double = 0.0,
+    var smoothness: Boolean = false,
 ) : TwoDimensionalPlot {
 
 
@@ -42,7 +45,30 @@ class Line(
      * It is to plot line graph diagram based on Kotlin Kandy
      */
     override fun plot(): Plot {
-        return org.jetbrains.kotlinx.kandy.dsl.plot {
+        val curvedLine = plot {
+            smoothLine(xDataSet, yDataSet) {
+                x(xDataSet)
+                y(yDataSet)
+
+                if (verticalIntersect) {
+                    vLine {
+                        xIntercept.constant(verticalIntersectValue)
+                        color = Color.RED
+                        type = LineType.DASHED
+                    }
+                }
+
+                if (horizontalIntersect) {
+                    hLine {
+                        yIntercept.constant(horizontalIntersectValue)
+                        color = Color.RED
+                        type = LineType.DASHED
+                    }
+                }
+            }
+        }
+
+        val straightLine = plot {
             line {
                 x(xDataSet)
                 y(yDataSet)
@@ -64,6 +90,14 @@ class Line(
                 }
             }
         }
+
+        return if (smoothness) {
+            curvedLine
+        } else {
+            straightLine
+        }
+
+
     }
 
     /**
