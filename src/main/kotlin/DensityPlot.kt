@@ -11,7 +11,7 @@ import org.jetbrains.kotlinx.statistics.kandy.layers.densityPlot
 class DensityPlot(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
-    override var diagramDescription: String = "Pie Chart",
+    override var diagramDescription: String = "Density Plot",
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
     override var yDataSet: List<Double> = mutableListOf<Double>(),
