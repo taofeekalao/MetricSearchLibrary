@@ -1,6 +1,5 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.layers.bars
 import org.jetbrains.kotlinx.kandy.letsplot.layers.line
@@ -79,16 +78,6 @@ class Histogram(
             y(Stat.count)
         }
     }
-
-
-    /**
-     * This function is the Histogram Diagram plot implementation of the save method from the two-dimensional interface.
-     * It is to save the Histogram Diagram plot in the form of a static image, and it is based on Kotlin Kandy
-     */
-    override fun save(plot: Plot, imageName: String) {
-        plot.save(imageName)
-    }
-
 }
 
 

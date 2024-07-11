@@ -1,7 +1,6 @@
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.letsplot.layers.points
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
 
@@ -38,15 +37,6 @@ class Scatter(
                 symbol = Symbol.CIRCLE_OPEN
             }
         }
-    }
-
-
-    /**
-     * This function is the Scatter Plot implementation of the save method from the two-dimensional interface.
-     * It is to save the scatter plot in the form of a static image, and it is based on Kotlin Kandy
-     */
-    override fun save(plot: Plot, imageName: String) {
-        plot.save(imageName)
     }
 }
 

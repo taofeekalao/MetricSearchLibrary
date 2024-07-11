@@ -1,6 +1,5 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.letsplot.layers.hLine
 import org.jetbrains.kotlinx.kandy.letsplot.layers.line
 import org.jetbrains.kotlinx.kandy.letsplot.layers.vLine
@@ -92,13 +91,5 @@ class Line(
                 }
             }
         }
-    }
-
-    /**
-     * This function is the Line Graph implementation of the save method from the two-dimensional interface.
-     * It is to save the Line Graph in the form of a static image, and it is based on Kotlin Kandy
-     */
-    override fun save(plot: Plot, imageName: String) {
-        plot.save(imageName)
     }
 }

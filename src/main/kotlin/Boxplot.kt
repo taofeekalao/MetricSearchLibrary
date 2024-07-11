@@ -1,5 +1,4 @@
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
 import org.jetbrains.kotlinx.kandy.util.color.Color
@@ -47,13 +46,5 @@ class Boxplot(
                 }
             }
         }
-    }
-
-    /**
-     * This function is the Boxplot Diagram implementation of the save method from the two-dimensional interface.
-     * It is to save the Boxplot diagram in the form of a static image, and it is based on Kotlin Kandy
-     */
-    override fun save(plot: Plot, imageName: String) {
-        plot.save(imageName)
     }
 }

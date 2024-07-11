@@ -1,5 +1,4 @@
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.letsplot.export.save
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.letsplot.layers.crossBars
@@ -29,14 +28,5 @@ class PieChart(
                 y(yDataSet)
             }
         }
-    }
-
-
-    /**
-     * This function is the Pie Chart implementation of the save method from the two-dimensional interface.
-     * It is to save the Pie Chart in the form of a static image, and it is based on Kotlin Kandy
-     */
-    override fun save(plot: Plot, imageName: String) {
-        plot.save(imageName)
     }
 }
