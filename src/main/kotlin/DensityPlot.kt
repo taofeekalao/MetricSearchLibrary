@@ -1,6 +1,8 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.util.color.Color
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
+import org.jetbrains.kotlinx.kandy.letsplot.layers.context.aes.WithAlpha
 import org.jetbrains.kotlinx.statistics.kandy.layers.densityPlot
 
 
@@ -14,6 +16,12 @@ class DensityPlot(
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
     override var yDataSet: List<Double> = mutableListOf<Double>(),
+
+    var borderLineWidth: Double = 0.0,
+    var borderLineColour: Color = Color.BLUE,
+    var plotFillColour: Color = Color.GREEN,
+    var alphaValue: Double = 0.0,
+
 ) : TwoDimensionalPlot {
 
     /**
@@ -34,7 +42,14 @@ class DensityPlot(
      */
     override fun plot(): Plot {
         return plot {
-            densityPlot(xDataSet)
+            densityPlot(xDataSet) {
+                alpha = alphaValue
+                fillColor = plotFillColour
+                borderLine.color = borderLineColour
+                borderLine.width = borderLineWidth
+                x.axis.name = xAxisDescription
+            }
+            layout.title = diagramDescription
         }
     }
 }
