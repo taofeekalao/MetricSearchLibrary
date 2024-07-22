@@ -1,9 +1,9 @@
-import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.layers.abLine
 import org.jetbrains.kotlinx.kandy.letsplot.layers.points
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
+import org.jetbrains.kotlinx.kandy.util.color.Color
 
 /**
  * This is the Scatter plot implementation class of the Two-Dimensional interface contract.
@@ -59,5 +59,3 @@ class Scatter(
         }
     }
 }
-
-

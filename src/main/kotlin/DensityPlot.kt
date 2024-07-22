@@ -1,7 +1,7 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
+import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.kandy.layers.densityPlot
 
 
@@ -21,7 +21,7 @@ class DensityPlot(
     var plotFillColour: Color = Color.GREEN,
     var alphaValue: Double = 0.0,
 
-) : TwoDimensionalPlot {
+    ) : TwoDimensionalPlot {
 
     /**
      * This is the primary constructor for the implementation.
@@ -32,7 +32,7 @@ class DensityPlot(
         }
 
         if (yDataSet.isNotEmpty()) {
-            yDataSet= mutableListOf<Double>()
+            yDataSet = mutableListOf<Double>()
         }
     }
 

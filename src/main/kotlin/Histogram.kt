@@ -33,7 +33,7 @@ class Histogram(
         }
 
         if (yDataSet.isNotEmpty()) {
-            yDataSet= mutableListOf<Double>()
+            yDataSet = mutableListOf<Double>()
         }
     }
 

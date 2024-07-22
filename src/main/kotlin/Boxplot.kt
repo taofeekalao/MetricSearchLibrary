@@ -1,5 +1,5 @@
-import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.dsl.plot
+import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.kandy.layers.boxplot
@@ -28,7 +28,7 @@ class Boxplot(
         }
 
         if (yDataSet.isNotEmpty()) {
-            yDataSet= mutableListOf<Double>()
+            yDataSet = mutableListOf<Double>()
         }
     }
 

@@ -1,7 +1,7 @@
-import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.dsl.plot
+import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.layers.crossBars
+import org.jetbrains.kotlinx.kandy.util.color.Color
 
 
 /**
