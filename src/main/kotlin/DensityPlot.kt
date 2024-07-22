@@ -16,6 +16,18 @@ class DensityPlot(
     override var yDataSet: List<Double> = mutableListOf<Double>(),
 ) : TwoDimensionalPlot {
 
+    /**
+     * This is the primary constructor for the implementation.
+     */
+    init {
+        if (xDataSet.isEmpty()) {
+            throw IllegalArgumentException("Dataset for x-axis cannot be empty")
+        }
+
+        if (yDataSet.isNotEmpty()) {
+            yDataSet= mutableListOf<Double>()
+        }
+    }
 
     /**
      * This is the Density Plot implementation class of the Two-Dimensional interface contract.

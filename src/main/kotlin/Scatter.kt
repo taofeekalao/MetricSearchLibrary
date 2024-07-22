@@ -20,8 +20,12 @@ class Scatter(
      * This is the primary constructor for the implementation.
      */
     init {
-        if (xDataSet.isEmpty() || yDataSet.isEmpty()) {
-            throw IllegalArgumentException("xDataSet or yDataSet can't be empty")
+        if (xDataSet.isEmpty()) {
+            throw IllegalArgumentException("Dataset for x-axis cannot be empty")
+        }
+
+        if (yDataSet.isEmpty()) {
+            throw IllegalArgumentException("Dataset for y-axis cannot be empty")
         }
     }
 

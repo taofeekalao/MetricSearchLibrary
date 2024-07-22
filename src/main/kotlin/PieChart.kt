@@ -16,6 +16,18 @@ class PieChart(
     override var yDataSet: List<Double> = mutableListOf<Double>(),
 ) : TwoDimensionalPlot {
 
+    /**
+     * This is the primary constructor for the implementation.
+     */
+    init {
+        if (xDataSet.isEmpty()) {
+            throw IllegalArgumentException("Dataset for x-axis cannot be empty")
+        }
+
+        if (yDataSet.isEmpty()) {
+            throw IllegalArgumentException("Dataset for y-axis cannot be empty")
+        }
+    }
 
     /**
      * This function is the Pie Chart implementation of the plot method from the two-dimensional interface.
