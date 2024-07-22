@@ -18,7 +18,10 @@ class Histogram(
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
     override var yDataSet: List<Double> = mutableListOf<Double>(),
-    var lineOption: Boolean = false
+
+    var lineOption: Boolean = false,
+    var BinsOptionByNumber: Int = 10,
+    var lineColour: Color = Color.BLACK,
 ) : TwoDimensionalPlot {
 
     /**
@@ -42,7 +45,7 @@ class Histogram(
     override fun plot(): Plot {
         if (lineOption) {
             return plot {
-                statBin(xDataSet, binsOption = BinsOption.byNumber(15)) {
+                statBin(xDataSet, binsOption = BinsOption.byNumber(BinsOptionByNumber)) {
                     plotBar()
                     plotLine()
                     layout.title = diagramDescription
@@ -50,7 +53,7 @@ class Histogram(
             }
         } else {
             return plot {
-                statBin(xDataSet, binsOption = BinsOption.byNumber(15)) {
+                statBin(xDataSet, binsOption = BinsOption.byNumber(BinsOptionByNumber)) {
                     plotBar()
                     layout.title = diagramDescription
                 }
@@ -65,7 +68,7 @@ class Histogram(
         line {
             x(Stat.x)
             y(Stat.count)
-            color = Color.GREEN
+            color = lineColour
         }
     }
 
@@ -79,5 +82,3 @@ class Histogram(
         }
     }
 }
-
-
