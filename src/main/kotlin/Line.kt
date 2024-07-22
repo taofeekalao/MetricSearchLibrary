@@ -1,3 +1,4 @@
+import org.jetbrains.kotlinx.kandy.dsl.internal.LayerPlotContext
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.layers.hLine
@@ -51,19 +52,11 @@ class Line(
                     y(yDataSet)
 
                     if (verticalIntersect) {
-                        vLine {
-                            xIntercept.constant(verticalIntersectValue)
-                            color = Color.RED
-                            type = LineType.DASHED
-                        }
+                        plotVLine()
                     }
 
                     if (horizontalIntersect) {
-                        hLine {
-                            yIntercept.constant(horizontalIntersectValue)
-                            color = Color.RED
-                            type = LineType.DASHED
-                        }
+                        plotHLine()
                     }
                 }
             }
@@ -74,22 +67,38 @@ class Line(
                     y(yDataSet)
 
                     if (verticalIntersect) {
-                        vLine {
-                            xIntercept.constant(verticalIntersectValue)
-                            color = Color.RED
-                            type = LineType.DASHED
-                        }
+                        plotVLine()
                     }
 
                     if (horizontalIntersect) {
-                        hLine {
-                            yIntercept.constant(horizontalIntersectValue)
-                            color = Color.RED
-                            type = LineType.DASHED
-                        }
+                        plotHLine()
                     }
                 }
             }
+        }
+    }
+
+
+    /**
+     * This is a helper function to plot a vertical line on the chart using the data supplied.
+     */
+    private fun LayerPlotContext.plotVLine() {
+        vLine {
+            xIntercept.constant(verticalIntersectValue)
+            color = Color.RED
+            type = LineType.DASHED
+        }
+    }
+
+
+    /**
+     * This is a helper function to plot a horizontal line on the chart using the data supplied.
+     */
+    private fun LayerPlotContext.plotHLine() {
+        hLine {
+            yIntercept.constant(horizontalIntersectValue)
+            color = Color.RED
+            type = LineType.DASHED
         }
     }
 }
