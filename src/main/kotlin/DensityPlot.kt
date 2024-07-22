@@ -2,7 +2,6 @@ import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
-import org.jetbrains.kotlinx.kandy.letsplot.layers.context.aes.WithAlpha
 import org.jetbrains.kotlinx.statistics.kandy.layers.densityPlot
 
 

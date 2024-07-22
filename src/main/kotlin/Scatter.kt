@@ -1,6 +1,7 @@
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
+import org.jetbrains.kotlinx.kandy.letsplot.layers.abLine
 import org.jetbrains.kotlinx.kandy.letsplot.layers.points
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
 
@@ -13,7 +14,14 @@ class Scatter(
     override var diagramDescription: String = "Scatter Plot",
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
-    override var yDataSet: List<Double>
+    override var yDataSet: List<Double>,
+
+    var abLineOption: Boolean = false,
+    var slopeConstant: Double = 0.5,
+    var interceptConstant: Double = 3.0,
+    var abLineColor: Color = Color.RED,
+    var pointSymbol: Symbol = Symbol.CIRCLE_OPEN
+
 ) : TwoDimensionalPlot {
 
     /**
@@ -38,7 +46,15 @@ class Scatter(
             points {
                 x(xDataSet)
                 y(yDataSet)
-                symbol = Symbol.CIRCLE_OPEN
+                symbol = pointSymbol
+            }
+
+            if (abLineOption) {
+                abLine {
+                    slope.constant(slopeConstant)
+                    intercept.constant(interceptConstant)
+                    color = abLineColor
+                }
             }
         }
     }
