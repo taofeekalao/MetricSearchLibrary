@@ -1,5 +1,6 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.layers.abLine
 import org.jetbrains.kotlinx.kandy.letsplot.layers.points
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
@@ -47,6 +48,9 @@ class Scatter(
                 x(xDataSet)
                 y(yDataSet)
                 symbol = pointSymbol
+
+                x.axis.name = xAxisDescription
+                y.axis.name = yAxisDescription
             }
 
             if (abLineOption) {
@@ -56,6 +60,7 @@ class Scatter(
                     color = abLineColor
                 }
             }
+            layout.title = diagramDescription
         }
     }
 }

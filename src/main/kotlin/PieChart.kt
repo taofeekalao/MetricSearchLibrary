@@ -1,6 +1,7 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
-import org.jetbrains.kotlinx.kandy.letsplot.layers.crossBars
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
+import org.jetbrains.kotlinx.kandy.letsplot.layers.pie
 import org.jetbrains.kotlinx.kandy.util.color.Color
 
 
@@ -35,10 +36,14 @@ class PieChart(
      */
     override fun plot(): Plot {
         return plot {
-            crossBars {
+            pie {
                 x(xDataSet)
                 y(yDataSet)
+
+                x.axis.name = xAxisDescription
+                y.axis.name = yAxisDescription
             }
+            layout.title = diagramDescription
         }
     }
 }

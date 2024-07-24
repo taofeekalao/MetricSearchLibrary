@@ -16,10 +16,10 @@ class DensityPlot(
     override var xDataSet: List<Double>,
     override var yDataSet: List<Double> = mutableListOf<Double>(),
 
-    var borderLineWidth: Double = 0.0,
+    var borderLineWidth: Double = 1.0,
     var borderLineColour: Color = Color.BLUE,
     var plotFillColour: Color = Color.GREEN,
-    var alphaValue: Double = 0.0,
+    var alphaValue: Double = 1.0,
 
     ) : TwoDimensionalPlot {
 
@@ -46,7 +46,9 @@ class DensityPlot(
                 fillColor = plotFillColour
                 borderLine.color = borderLineColour
                 borderLine.width = borderLineWidth
+
                 x.axis.name = xAxisDescription
+                y.axis.name = yAxisDescription
             }
             layout.title = diagramDescription
         }

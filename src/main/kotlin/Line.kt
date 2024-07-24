@@ -1,6 +1,7 @@
 import org.jetbrains.kotlinx.kandy.dsl.internal.LayerPlotContext
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.layers.hLine
 import org.jetbrains.kotlinx.kandy.letsplot.layers.line
 import org.jetbrains.kotlinx.kandy.letsplot.layers.vLine
@@ -58,7 +59,11 @@ class Line(
                     if (horizontalIntersect) {
                         plotHLine()
                     }
+
+                    x.axis.name = xAxisDescription
+                    y.axis.name = yAxisDescription
                 }
+                layout.title = diagramDescription
             }
         } else {
             plot {
@@ -73,7 +78,11 @@ class Line(
                     if (horizontalIntersect) {
                         plotHLine()
                     }
+
+                    x.axis.name = xAxisDescription
+                    y.axis.name = yAxisDescription
                 }
+                layout.title = diagramDescription
             }
         }
     }

@@ -3,6 +3,8 @@ import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.layers.bars
 import org.jetbrains.kotlinx.kandy.letsplot.layers.line
+import org.jetbrains.kotlinx.kandy.letsplot.x
+import org.jetbrains.kotlinx.kandy.letsplot.y
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.binning.BinsOption
 import org.jetbrains.kotlinx.statistics.kandy.stattransform.context.StatBinLayerCollectorContext
@@ -48,15 +50,20 @@ class Histogram(
                 statBin(xDataSet, binsOption = BinsOption.byNumber(BinsOptionByNumber)) {
                     plotBar()
                     plotLine()
-                    layout.title = diagramDescription
+
+                    x.axis.name = xAxisDescription
+                    y.axis.name = yAxisDescription
                 }
+                layout.title = diagramDescription
             }
         } else {
             return plot {
                 statBin(xDataSet, binsOption = BinsOption.byNumber(BinsOptionByNumber)) {
                     plotBar()
-                    layout.title = diagramDescription
+                    x.axis.name = xAxisDescription
+                    y.axis.name = yAxisDescription
                 }
+                layout.title = diagramDescription
             }
         }
     }

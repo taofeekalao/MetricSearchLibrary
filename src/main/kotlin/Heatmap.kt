@@ -1,5 +1,8 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
+import org.jetbrains.kotlinx.kandy.letsplot.x
+import org.jetbrains.kotlinx.kandy.letsplot.y
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.kandy.statplots.heatmap
 
@@ -32,6 +35,11 @@ class Heatmap(
     override fun plot(): Plot {
         return plot {
             heatmap(xDataSet, yDataSet)
+
+            x.axis.name = xAxisDescription
+            y.axis.name = yAxisDescription
+
+            layout.title = diagramDescription
         }
     }
 }

@@ -1,6 +1,9 @@
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
+import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.settings.Symbol
+import org.jetbrains.kotlinx.kandy.letsplot.x
+import org.jetbrains.kotlinx.kandy.letsplot.y
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.kandy.layers.boxplot
 
@@ -14,6 +17,7 @@ class Boxplot(
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
     override var yDataSet: List<Double> = mutableListOf<Double>(),
+
     var boxplotFillColor: Color = Color.BLACK,
     var boxplotColor: Color = Color.BLACK,
     var boxplotSymbol: Symbol = Symbol.DIAMOND
@@ -44,7 +48,11 @@ class Boxplot(
                     color = boxplotColor
                     symbol = boxplotSymbol
                 }
+
+                x.axis.name = xAxisDescription
+                y.axis.name = yAxisDescription
             }
+            layout.title = diagramDescription
         }
     }
 }
