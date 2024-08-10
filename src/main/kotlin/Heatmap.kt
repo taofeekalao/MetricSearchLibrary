@@ -7,12 +7,12 @@ import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.jetbrains.kotlinx.statistics.kandy.statplots.heatmap
 
 class Heatmap(
-    override var yAxisDescription: String,
-    override var xAxisDescription: String,
-    override var diagramDescription: String,
-    override var colour: Color,
+    override var yAxisDescription: String = "Y - Axis",
+    override var xAxisDescription: String = "X - Axis",
+    override var diagramDescription: String = "Heatmap",
+    override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
-    override var yDataSet: List<Double>
+    override var yDataSet: List<Double>,
 ) : TwoDimensionalPlot {
 
 
