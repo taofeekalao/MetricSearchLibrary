@@ -12,7 +12,7 @@ import org.jetbrains.kotlinx.statistics.kandy.layers.smoothLine
 /**
  * This is the Line Graph implementation class of the Two-Dimensional interface contract.
  */
-class Line(
+class Line @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
     override var diagramDescription: String = "Line Graph",

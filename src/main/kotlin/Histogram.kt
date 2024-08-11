@@ -13,7 +13,7 @@ import org.jetbrains.kotlinx.statistics.kandy.stattransform.statBin
 /**
  * This is the Histogram diagram implementation class of the Two-Dimensional interface contract.
  */
-class Histogram(
+class Histogram @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
     override var diagramDescription: String = "Histogram",

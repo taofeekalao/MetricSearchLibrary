@@ -8,7 +8,7 @@ import org.jetbrains.kotlinx.statistics.kandy.layers.densityPlot
 /**
  * This is the Density Plot implementation class of the Two-Dimensional interface contract.
  */
-class DensityPlot(
+class DensityPlot @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
     override var diagramDescription: String = "Density Plot",

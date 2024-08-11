@@ -10,7 +10,7 @@ import org.jetbrains.kotlinx.statistics.kandy.layers.boxplot
 /**
  * This is the Boxplot diagram implementation class of the Two-Dimensional interface contract.
  */
-class Boxplot(
+class Boxplot @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
     override var diagramDescription: String = "Boxplot Diagram",

@@ -9,7 +9,7 @@ import org.jetbrains.kotlinx.kandy.util.color.Color
 /**
  * This is the Scatter plot implementation class of the Two-Dimensional interface contract.
  */
-class Scatter(
+class Scatter @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
     override var diagramDescription: String = "Scatter Plot",

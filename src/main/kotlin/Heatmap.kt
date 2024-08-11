@@ -1,20 +1,13 @@
-import org.jetbrains.kotlinx.dataframe.DataFrame
-import org.jetbrains.kotlinx.kandy.dsl.continuous
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
 import org.jetbrains.kotlinx.kandy.letsplot.layers.points
-import org.jetbrains.kotlinx.kandy.letsplot.layers.tiles
-import org.jetbrains.kotlinx.kandy.letsplot.scales.BrewerPalette
-import org.jetbrains.kotlinx.kandy.letsplot.scales.continuousColorBrewer
 import org.jetbrains.kotlinx.kandy.letsplot.x
 import org.jetbrains.kotlinx.kandy.letsplot.y
 import org.jetbrains.kotlinx.kandy.util.color.Color
-import org.jetbrains.kotlinx.statistics.kandy.layers.heatmap
-import org.jetbrains.kotlinx.statistics.kandy.statplots.heatmap
 import org.jetbrains.kotlinx.statistics.kandy.stattransform.statCount2D
 
-class Heatmap(
+class Heatmap @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
     override var diagramDescription: String = "Heatmap",

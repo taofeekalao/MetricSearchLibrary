@@ -7,14 +7,13 @@ import org.jetbrains.kotlinx.kandy.letsplot.layers.line
 import org.jetbrains.kotlinx.kandy.letsplot.layers.vLine
 import org.jetbrains.kotlinx.kandy.letsplot.settings.LineType
 import org.jetbrains.kotlinx.kandy.util.color.Color
-import org.jetbrains.kotlinx.statistics.kandy.layers.smoothLine
 import org.jetbrains.kotlinx.statistics.math3.distribution.NormalDistribution
 
 /**
  * This is the Cumulative Distribution CDF Plot implementation class of the Two-Dimensional interface contract.
  * It calculates the CDF using the Apache Maths Commons Library, and then plots the output using the Line graph from Kotlin Kandy.
  */
-class CumulativeDistributionPlot(
+class CumulativeDistributionPlot @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis - Cumulative Values",
     override var xAxisDescription: String = "X - Axis",
     override var diagramDescription: String = "Cumulative Distribution Function Plot",
