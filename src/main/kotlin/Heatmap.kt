@@ -1,10 +1,18 @@
+import org.jetbrains.kotlinx.dataframe.DataFrame
+import org.jetbrains.kotlinx.kandy.dsl.continuous
 import org.jetbrains.kotlinx.kandy.dsl.plot
 import org.jetbrains.kotlinx.kandy.ir.Plot
 import org.jetbrains.kotlinx.kandy.letsplot.feature.layout
+import org.jetbrains.kotlinx.kandy.letsplot.layers.points
+import org.jetbrains.kotlinx.kandy.letsplot.layers.tiles
+import org.jetbrains.kotlinx.kandy.letsplot.scales.BrewerPalette
+import org.jetbrains.kotlinx.kandy.letsplot.scales.continuousColorBrewer
 import org.jetbrains.kotlinx.kandy.letsplot.x
 import org.jetbrains.kotlinx.kandy.letsplot.y
 import org.jetbrains.kotlinx.kandy.util.color.Color
+import org.jetbrains.kotlinx.statistics.kandy.layers.heatmap
 import org.jetbrains.kotlinx.statistics.kandy.statplots.heatmap
+import org.jetbrains.kotlinx.statistics.kandy.stattransform.statCount2D
 
 class Heatmap(
     override var yAxisDescription: String = "Y - Axis",
@@ -13,6 +21,8 @@ class Heatmap(
     override var colour: Color = Color.BLUE,
     override var xDataSet: List<Double>,
     override var yDataSet: List<Double>,
+
+    var plotColour: Color = Color.RED,
 ) : TwoDimensionalPlot {
 
 
@@ -34,7 +44,13 @@ class Heatmap(
      */
     override fun plot(): Plot {
         return plot {
-            heatmap(xDataSet, yDataSet)
+            statCount2D(xDataSet, yDataSet) {
+                points {
+                    x(Stat.x)
+                    y(Stat.y)
+                    color = plotColour
+                }
+            }
 
             x.axis.name = xAxisDescription
             y.axis.name = yAxisDescription
