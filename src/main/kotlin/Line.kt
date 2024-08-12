@@ -11,7 +11,25 @@ import org.jetbrains.kotlinx.statistics.kandy.layers.smoothLine
 
 /**
  * This is the Line Graph implementation class of the Two-Dimensional interface contract.
+ *
+ *
+ * @param yAxisDescription The x-axis description of the plot. It has a default value of "X - Axis".
+ * @param xAxisDescription The y-axis description of the plot. It has a default value of "Y - Axis".
+ * @param diagramDescription The general description of the plot. It has a default value of "Line Plot".
+ * @param colour The colour of the plot object. It has a default value of Color.BLUE.
+ * @param xDataSet This is the dataset for the x-axis. It is a list of Doubles.
+ * @param yDataSet This is the dataset for the y-axis. It is a list of Doubles.
+ * @param verticalIntersect This is the vertical intersecting line on the plot.
+ * It is a boolean parameter to toggle the line.
+ * It has a default value of false.
+ * @param verticalIntersectValue This is the vertical intersecting line value on the plot. It has a default value of zero.
+ * @param horizontalIntersect This is the horizontal intersecting line on the plot.
+ *  * It is a boolean parameter to toggle the line.
+ *  * It has a default value of false.
+ * @param horizontalIntersectValue This is the horizontal intersecting line on the plot. It has a default value of zero.
+ * @param smoothness This is a boolean flag to switch the plot to a smooth line plot.
  */
+
 class Line @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
     override var xAxisDescription: String = "X - Axis",
@@ -29,7 +47,7 @@ class Line @JvmOverloads constructor(
 
 
     /**
-     * This is the primary constructor for the implementation.
+     * This is the primary constructor for the implementation. It enforces checks on the datasets supplied to the class.
      */
     init {
         if (xDataSet.isEmpty()) {
@@ -43,7 +61,9 @@ class Line @JvmOverloads constructor(
 
     /**
      * This function is the Line Graph implementation of the plot method from the two-dimensional interface.
-     * It is to plot line graph diagram based on Kotlin Kandy
+     * It is to plot line graph diagram based on Kotlin Kandy.
+     *
+     * @return a Kandy internal representation plot object for rendering.
      */
     override fun plot(): Plot {
         return if (smoothness) {

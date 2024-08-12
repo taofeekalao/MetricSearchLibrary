@@ -12,7 +12,24 @@ import org.jetbrains.kotlinx.statistics.math3.distribution.NormalDistribution
 /**
  * This is the Cumulative Distribution CDF Plot implementation class of the Two-Dimensional interface contract.
  * It calculates the CDF using the Apache Maths Commons Library, and then plots the output using the Line graph from Kotlin Kandy.
+ *
+ *
+ * @param yAxisDescription The x-axis description of the plot. It has a default value of "X - Axis".
+ * @param xAxisDescription The y-axis description of the plot. It has a default value of "Y - Axis - Cumulative Values".
+ * @param diagramDescription The general description of the plot. It has a default value of "Cumulative Distribution Function Plot".
+ * @param colour The colour of the plot object. It has a default value of Color.BLUE.
+ * @param xDataSet This is the dataset for the x-axis. It is a list of Doubles.
+ * @param yDataSet This is the dataset for the y-axis. It is a list of Doubles.
+ * @param verticalIntersect This is the vertical intersecting line on the plot.
+ * It is a boolean parameter to toggle the line.
+ * It has a default value of false.
+ * @param verticalIntersectValue This is the vertical intersecting line value on the plot. It has a default value of zero.
+ * @param horizontalIntersect This is the horizontal intersecting line on the plot.
+ *  * It is a boolean parameter to toggle the line.
+ *  * It has a default value of false.
+ * @param horizontalIntersectValue This is the horizontal intersecting line on the plot. It has a default value of zero.
  */
+
 class CumulativeDistributionPlot @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis - Cumulative Values",
     override var xAxisDescription: String = "X - Axis",
@@ -28,12 +45,11 @@ class CumulativeDistributionPlot @JvmOverloads constructor(
     var verticalIntersectValue: Double = 0.0,
     var horizontalIntersect: Boolean = false,
     var horizontalIntersectValue: Double = 0.0,
-    var smoothness: Boolean = false,
 ) : TwoDimensionalPlot {
 
 
     /**
-     * This is the primary constructor for the implementation.
+     * This is the primary constructor for the implementation. It enforces checks on the datasets supplied to the class.
      */
     init {
         if (xDataSet.isEmpty()) {
@@ -53,6 +69,8 @@ class CumulativeDistributionPlot @JvmOverloads constructor(
     /**
      * This function is the Line Graph implementation of the plot method from the two-dimensional interface.
      * It is to plot line graph diagram based on Kotlin Kandy
+     *
+     * @return a Kandy internal representation plot object for rendering.
      */
     override fun plot(): Plot {
         return plot {

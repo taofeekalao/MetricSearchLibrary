@@ -7,6 +7,18 @@ import org.jetbrains.kotlinx.statistics.kandy.layers.densityPlot
 
 /**
  * This is the Density Plot implementation class of the Two-Dimensional interface contract.
+ *
+ *
+ * @param yAxisDescription The x-axis description of the plot. It has a default value of "X - Axis".
+ * @param xAxisDescription The y-axis description of the plot. It has a default value of "Y - Axis".
+ * @param diagramDescription The general description of the plot. It has a default value of "Density Plot".
+ * @param colour The colour of the plot object. It has a default value of Color.BLUE.
+ * @param xDataSet This is the dataset for the x-axis. It is a list of Doubles.
+ * @param yDataSet This is the dataset for the y-axis. It is a list of Doubles.
+ * @param plotFillColour - This is the fill colour for the plot. It has a default value of Color.BLUE.
+ * @param borderLineWidth This is the borderline width of the plot. It has a default value of 1.0.
+ * @param borderLineColour This is the borderline colour for the plot. It has a default value of Color.GREEN.
+ * @param alphaValue This is the alpha value. It has a default value of 1.0.
  */
 class DensityPlot @JvmOverloads constructor(
     override var yAxisDescription: String = "Y - Axis",
@@ -24,7 +36,7 @@ class DensityPlot @JvmOverloads constructor(
     ) : TwoDimensionalPlot {
 
     /**
-     * This is the primary constructor for the implementation.
+     * This is the primary constructor for the implementation. It enforces checks on the datasets supplied to the class.
      */
     init {
         if (xDataSet.isEmpty()) {
@@ -38,6 +50,8 @@ class DensityPlot @JvmOverloads constructor(
 
     /**
      * This is the Density Plot implementation class of the Two-Dimensional interface contract.
+     *
+     * @return a Kandy internal representation plot object for rendering.
      */
     override fun plot(): Plot {
         return plot {
