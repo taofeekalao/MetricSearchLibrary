@@ -1,8 +1,9 @@
-
 import org.jetbrains.kotlinx.kandy.util.color.Color
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.*
+import java.lang.IllegalArgumentException
 
 class LineTest {
 
@@ -34,5 +35,23 @@ class LineTest {
         assertEquals("X - Axis", line.xAxisDescription)
         assertEquals("Line Graph", line.diagramDescription)
         assertEquals(Color.BLUE, line.colour)
+    }
+
+    @Test
+    fun `test Line plot creation`() {
+        val line = Line("Y - Axis", "X - Axis", "Line Graph", Color.BLUE, xData, yData, false, 0.0, false, 0.0, false)
+        val plot = line.plot()
+
+        assertNotNull(plot)
+    }
+
+    @Test
+    fun `test Line save`() {
+        val line = Line("Y - Axis", "X - Axis", "Line Graph", Color.BLUE, xData, yData, false, 0.0, false, 0.0, false)
+        val plot = line.plot()
+
+        assertDoesNotThrow {
+            line.save(plot, "line_test.png")
+        }
     }
 }

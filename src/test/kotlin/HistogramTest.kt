@@ -33,4 +33,14 @@ class HistogramTest {
         val plot = histogram.plot()
         assertEquals(true, plot is Plot)
     }
+
+    @Test
+    fun `test Histogram save`() {
+        val histogram = Histogram("Y - Axis", "X - Axis", "Histogram", Color.BLUE, xData, emptyList(), false, 10, Color.BLACK)
+        val plot = histogram.plot()
+
+        assertDoesNotThrow {
+            histogram.save(plot, "histogram_test.png")
+        }
+    }
 }
