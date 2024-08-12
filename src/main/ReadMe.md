@@ -11,6 +11,52 @@ This Kotlin Visualisation Library for Metric Space Search is designed to simplif
 - **Customizable**: Provides extensive customization options for axis descriptions, colors, plot types, and more.
 - **Easy to Use**: Simple and intuitive API designed to be used with minimal setup.
 
+## Detailed Documentation
+
+#### Parent Interface Description:
+The `TwoDimensionalPlot` interface defines the contract for creating two-dimensional plots. It includes properties for axis descriptions, diagram titles, colour, data sets, and methods for plotting and saving diagrams.
+
+```kotlin
+interface TwoDimensionalPlot {
+    var yAxisDescription: String
+    var xAxisDescription: String
+    var diagramDescription: String
+    var colour: Color
+    var xDataSet: List<Double>
+    var yDataSet: List<Double>
+
+    fun plot(): Plot
+
+    fun save(plot: Plot, imageName: String) {
+        plot.save(imageName)
+    }
+}
+```
+
+#### Child Class Description:
+
+The `Line` class implements the `TwoDimensionalPlot` interface to create line graphs.
+It includes additional properties for vertical and horizontal intersect lines and smoothness.
+
+
+The `BoxPlot` class implements the `TwoDimensionalPlot` interface to create.
+It includes additional properties for fill colour, colour and plot symbol for the outliers.
+
+The `Histogram` class implements the `TwoDimensionalPlot` interface to create.
+It includes additional properties for a line plot that mimics the distribution function,
+line colour, and bin option value used to determine the number of grouped dataset samples.
+
+The `Scatter Plot` class implements the `TwoDimensionalPlot` interface to create.
+It includes additional properties for a line plot to plot an intersection, line colour, and plot symbol.
+
+The `Density Plot (PDF)` class implements the `TwoDimensionalPlot` interface to create.
+It includes additional properties for a border line width, colour, and fill colour.
+
+The `Cumulative Distribution Function Plot` class implements the `TwoDimensionalPlot` interface to create.
+It includes additional properties for a vertical and a horizontal intersect with their respective values.
+
+
+
 ## Getting Started
 
 To use this library, ensure that you have Kotlin and Java development environments set up. You can include the library in your project by adding the necessary dependencies to your build system (Gradle, Maven, etc.).
@@ -19,13 +65,14 @@ To use this library, ensure that you have Kotlin and Java development environmen
 
 - Metric Space Search Framework Library
 - Kotlin Visualisation Library for Metric Space Search
-- Install both libraries above into Maven Local repository or publish both to a central repository and reference both from the central repository.
+- Install both libraries above into local Maven repository or publish both to a central repository and reference them from the central repository.
 
-### Install the Artifact in Maven Local Repository
+### Install the Artefacts in the local Maven Repository
 #### Installing The Metric Space Search Framework Library in Maven Local Repository
-- Download the required jar library to your system.
+- Download the required jar libraries to your system.
+- Make a copy of the command below to install the jars into the local repository.
 - Replace "path/to/your/jar/" with the location of the jar files on your system in the command below.
-- Execute the command to install the jar file in your local maven.
+- Execute the command to install the jar file in the local Maven repo.
   
 ```shell
     mvn install:install-file -Dfile=path/to/your/jar/Metric-space-framework-1.0-20211209.152843-1.jar \
@@ -50,7 +97,7 @@ To use this library, ensure that you have Kotlin and Java development environmen
 - JDK 8 or above
 - Maven or Gradle for dependency management
 - Metric Space Search Framework Library
-- 
+
 ### Dependency & Repository Setup
 
 Add the following dependency and repository entry to your `pom.xml` (for Maven) or `build.gradle` (for Gradle):
@@ -81,14 +128,24 @@ Add the following dependency and repository entry to your `pom.xml` (for Maven) 
 ```xml
 <!-- Dependencies -->
 <dependencies>
+    <!-- Use This Dependency Format If Jar File Is Located In A Folder Called 'lib' Your Project Root -->
     <dependency>
-        <!-- Use This Dependency Format If Jar File Is Located In A Folder Called 'lib' Your Project Root -->
         <groupId>com.example</groupId>
         <artifactId>metric-space-framework</artifactId>
         <version>1.0</version>
         <scope>system</scope>
         <systemPath>${project.basedir}/libs/Metric-space-framework-1.0-20211209.152843-1.jar</systemPath>
     </dependency>
+
+    <dependency>
+        <groupId>com.metric.search.visualisation</groupId>
+        <artifactId>visualisation-library</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/libs/Metric-space-framework-1.0-20211209.152843-1.jar</systemPath>
+    </dependency>
+    <!--  -->
+
 
     <!-- Use This Dependency Format If Jar File Is Installed In Your Local Maven Director By The Steps Given Under General Requirements. -->
     <dependency>
@@ -102,6 +159,7 @@ Add the following dependency and repository entry to your `pom.xml` (for Maven) 
         <artifactId>visualisation-library</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
+    <!-- -->
     
     <dependency>
         <groupId>org.jetbrains.kotlinx</groupId>
@@ -134,8 +192,15 @@ repositories {
 
 
 dependencies {
+// use these if the jar files are located in a folder name libs in the project root directory.
     implementation(files("libs/Metric-space-framework-1.0-20211209.152843-1.jar"))
+    implementation(files("libs/visualisation-library-1.0-SNAPSHOT.jar"))
+
+// use these if the jar files are successfully installed in the local Maven or a central Maven directory.
+    implementation("com.example:metric-space-framework:1.0")
     implementation("com.metric.search.visualisation:visualisation-library:1.0-SNAPSHOT")
+    
+    
     implementation("org.jetbrains.kotlinx:kandy-lets-plot:0.6.0")
     implementation("org.apache.commons:commons-math3:3.6.1")
 }
@@ -193,8 +258,14 @@ repositories {
 
 
 dependencies {
+// use these if the jar files are located in a folder name libs in the project root directory.
     implementation(files("libs/Metric-space-framework-1.0-20211209.152843-1.jar"))
+    implementation(files("libs/visualisation-library-1.0-SNAPSHOT.jar"))
+
+// use these if the jar files are successfully installed in the local Maven or a central Maven directory.
+    implementation("com.example:metric-space-framework:1.0")
     implementation("com.metric.search.visualisation:visualisation-library:1.0-SNAPSHOT")
+    
     implementation("org.jetbrains.kotlinx:kandy-lets-plot:0.6.0")
     implementation("org.apache.commons:commons-math3:3.6.1")
 }
@@ -227,6 +298,7 @@ Or to your `pom.xml` (for Maven):
 ```xml
 <!-- Dependencies -->
 <dependencies>
+    <!-- Use This Dependency Format If Jar File Is Located In A Folder Called 'lib' Your Project Root -->
     <dependency>
         <groupId>com.example</groupId>
         <artifactId>metric-space-framework</artifactId>
@@ -234,12 +306,30 @@ Or to your `pom.xml` (for Maven):
         <scope>system</scope>
         <systemPath>${project.basedir}/libs/Metric-space-framework-1.0-20211209.152843-1.jar</systemPath>
     </dependency>
-    
+
+    <dependency>
+        <groupId>com.metric.search.visualisation</groupId>
+        <artifactId>visualisation-library</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/libs/Metric-space-framework-1.0-20211209.152843-1.jar</systemPath>
+    </dependency>
+    <!--  -->
+
+
+    <!-- Use This Dependency Format If Jar File Is Installed In Your Local Maven Director By The Steps Given Under General Requirements. -->
+    <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>metric-space-framework</artifactId>
+        <version>1.0</version>
+    </dependency>
+
     <dependency>
         <groupId>com.metric.search.visualisation</groupId>
         <artifactId>visualisation-library</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
+    <!-- -->
     
     <dependency>
         <groupId>org.jetbrains.kotlinx</groupId>
@@ -308,8 +398,15 @@ repositories {
 
 
 dependencies {
+// use these if the jar files are located in a folder name libs in the project root directory.
     implementation(files("libs/Metric-space-framework-1.0-20211209.152843-1.jar"))
+    implementation(files("libs/visualisation-library-1.0-SNAPSHOT.jar"))
+
+// use these if the jar files are successfully installed in the local Maven or a central Maven directory.
+    implementation("com.example:metric-space-framework:1.0")
     implementation("com.metric.search.visualisation:visualisation-library:1.0-SNAPSHOT")
+    
+    
     implementation("org.jetbrains.kotlinx:kandy-lets-plot:0.6.0")
     implementation("org.apache.commons:commons-math3:3.6.1")
 }
@@ -342,6 +439,7 @@ Or to your `pom.xml` (for Maven):
 ```xml
 <!-- Dependencies -->
 <dependencies>
+    <!-- Use This Dependency Format If Jar File Is Located In A Folder Called 'lib' Your Project Root -->
     <dependency>
         <groupId>com.example</groupId>
         <artifactId>metric-space-framework</artifactId>
@@ -349,12 +447,30 @@ Or to your `pom.xml` (for Maven):
         <scope>system</scope>
         <systemPath>${project.basedir}/libs/Metric-space-framework-1.0-20211209.152843-1.jar</systemPath>
     </dependency>
-    
+
+    <dependency>
+        <groupId>com.metric.search.visualisation</groupId>
+        <artifactId>visualisation-library</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/libs/Metric-space-framework-1.0-20211209.152843-1.jar</systemPath>
+    </dependency>
+    <!--  -->
+
+
+    <!-- Use This Dependency Format If Jar File Is Installed In Your Local Maven Director By The Steps Given Under General Requirements. -->
+    <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>metric-space-framework</artifactId>
+        <version>1.0</version>
+    </dependency>
+
     <dependency>
         <groupId>com.metric.search.visualisation</groupId>
         <artifactId>visualisation-library</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
+    <!-- -->
     
     <dependency>
         <groupId>org.jetbrains.kotlinx</groupId>
@@ -378,10 +494,19 @@ Or to your `pom.xml` (for Maven):
 ```
 
 
-Add the necessary dependencies in a Jupyter notebook cell:
+Add the necessary dependencies in a Kotlin Notebook cell:
 
 ```kotlin
+// use these if the jar files are successfully installed in the local Maven or a central Maven directory.
+
 @file:DependsOn("com.metric.search.visualisation:visualisation-library:1.0-SNAPSHOT")
+@file:DependsOn("com.example:metric-space-framework:1.0")
+```
+
+```kotlin
+// use these if the jar files are located in a folder name libs in the project root directory.
+
+@file:DependsOn("../../../libs/visualisation-library-1.0-SNAPSHOT.jar")
 @file:DependsOn("../../../libs/Metric-space-framework-1.0-20211209.152843-1.jar")
 ```
 
@@ -414,10 +539,8 @@ linePlot.save(plot, "line_plot_example.png")
 
 ## Usage With The Metric Search Framework
 See the JavaUsage and the MetricSearchNote repositories for practical use of the visualisation library with the Metric Search framework.
-
-## Documentation
-
-For further details on the API, usage examples, and customisation options, please refer to the library's official documentation at [Documentation Link].
+- JavaUsage repository - 
+- MetricSearchNote repository -
 
 ## Contributing
 
