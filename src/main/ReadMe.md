@@ -539,8 +539,8 @@ linePlot.save(plot, "line_plot_example.png")
 
 ## Usage With The Metric Search Framework
 See the JavaUsage and the MetricSearchNote repositories for practical use of the visualisation library with the Metric Search framework.
-- JavaUsage repository - 
-- MetricSearchNote repository -
+- JavaUsage repository - https://github.com/taofeekalao/JavaUsage
+- MetricSearchNote repository - https://github.com/taofeekalao/MetricSearchNote
 
 ## Contributing
 
